@@ -1,11 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  /* Cat-themed warm oranges and teals */
+  --color-primary-50: #f0fdff;
+  --color-primary-100: #ccf7fe;
+  --color-primary-200: #99effd;
+  --color-primary-300: #5ce3fa;
+  --color-primary-400: #22cdf0;
+  --color-primary-500: #06afd6;
+  --color-primary-600: #088cb4;
+  --color-primary-700: #0e7092;
+  --color-primary-800: #155b76;
+  --color-primary-900: #164c63;
 
-@layer base {
-  body {
-    @apply bg-gradient-to-br from-primary-50 via-white to-accent-50 min-h-screen;
-  }
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+
+  --color-warm-50: #fefce8;
+  --color-warm-100: #fef9c3;
+  --color-warm-200: #fef08a;
+  --color-warm-300: #fde047;
+  --color-warm-400: #facc15;
+  --color-warm-500: #eab308;
+  --color-warm-600: #ca8a04;
+  --color-warm-700: #a16207;
+  --color-warm-800: #854d0e;
+  --color-warm-900: #713f12;
+
+  --font-heading: 'DM Sans', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  /* Custom animations */
+  --animate-bounce-slow: bounce 3s infinite;
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+body {
+  background: linear-gradient(to bottom right, var(--color-primary-50), white, var(--color-accent-50));
+  min-height: 100vh;
+  font-family: var(--font-sans);
 }

@@ -31,16 +31,15 @@ The result? Weather predictions that are either surprisingly accurate or hilario
 - **React 18** with TypeScript
 - **Vite** for blazing fast builds
 - **Tailwind CSS** for styling
-- **OpenWeather API** for actual weather data
-- **Giphy API** for cat GIF excellence
+- **Open-Meteo API** for weather data (free, no key required!)
+- **The Cat API** for cat images (free, no key required!)
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js 18+ and npm
-- OpenWeather API key ([get one free](https://openweathermap.org/api))
-- Giphy API key ([get one free](https://developers.giphy.com/))
+- That's it! No API keys required!
 
 ### Installation
 
@@ -55,25 +54,12 @@ The result? Weather predictions that are either surprisingly accurate or hilario
    npm install
    ```
 
-3. **Set up environment variables**
-
-   Create a `.env` file in the root directory:
-   ```bash
-   cp .env.example .env
-   ```
-
-   Then add your API keys to `.env`:
-   ```env
-   VITE_OPENWEATHER_API_KEY=your_openweather_api_key_here
-   VITE_GIPHY_API_KEY=your_giphy_api_key_here
-   ```
-
-4. **Start the development server**
+3. **Start the development server**
    ```bash
    npm run dev
    ```
 
-5. **Open your browser**
+4. **Open your browser**
 
    Navigate to `http://localhost:5173` and consult your cat!
 
@@ -91,14 +77,13 @@ The optimized production build will be in the `dist/` directory.
 
 1. Push your code to GitHub
 2. Connect your repository to Netlify
-3. Add environment variables in Netlify dashboard:
-   - `VITE_OPENWEATHER_API_KEY`
-   - `VITE_GIPHY_API_KEY`
-4. Deploy!
+3. Deploy!
 
 Build settings:
 - **Build command:** `npm run build`
 - **Publish directory:** `dist`
+
+That's it! No environment variables or API keys needed.
 
 ### Other Platforms
 
@@ -108,7 +93,7 @@ CatCast works on any static hosting platform:
 - GitHub Pages
 - AWS S3 + CloudFront
 
-Just remember to set your environment variables!
+Deploy and forget - no configuration required!
 
 ## How It Works
 
@@ -116,9 +101,10 @@ Just remember to set your environment variables!
 2. **Selects their cat's current behavior** (sleeping, zoomies, loafing, etc.)
 3. **Chooses their cat's personality type** (The Chonk, The Drama Queen, etc.)
 4. **Magic happens:**
-   - Fetches real weather data from OpenWeather API
+   - Converts zip code to coordinates using Nominatim (OpenStreetMap)
+   - Fetches real weather data from Open-Meteo API (free, no key!)
    - Generates pseudo-scientific "analysis" connecting behavior + personality to weather
-   - Finds a relevant cat GIF from Giphy
+   - Fetches a cat image from The Cat API (free, no key!)
 5. **Results displayed** with actual weather data and cat-themed interpretation
 
 ## Project Structure
@@ -139,21 +125,27 @@ catcast/
 │   ├── App.tsx              # Main app component
 │   └── index.css            # Tailwind styles
 ├── public/                  # Static assets
-├── .env.example             # Environment variables template
 └── README.md
 ```
 
-## API Usage
+## APIs Used (All Free, No Keys Required!)
 
-### OpenWeather API
-- **Free tier:** 1,000 calls/day
-- **Rate limiting:** Implemented (5-minute cache per zip code)
-- **Endpoint:** Current Weather Data
+### Open-Meteo Weather API
+- **Completely free** - no API key needed
+- **No rate limits** for reasonable usage
+- **Endpoint:** Current weather with temperature, humidity, wind speed
+- **Documentation:** https://open-meteo.com/
 
-### Giphy API
-- **Free tier:** Generous limits
-- **Content rating:** G-rated cat GIFs only
-- **Fallback:** Random cat GIF if search fails
+### Nominatim (OpenStreetMap)
+- **Completely free** - no API key needed
+- **Purpose:** Converts US zip codes to coordinates
+- **Documentation:** https://nominatim.org/
+
+### The Cat API
+- **Free tier** - no API key needed for basic usage
+- **Purpose:** Fetches random cat images
+- **Fallback:** Adorable cat emoji if API fails
+- **Documentation:** https://thecatapi.com/
 
 ## Future Enhancements
 
@@ -177,8 +169,9 @@ MIT License - Use this to build your own silly weather apps!
 
 ## Credits
 
-- Weather data by [OpenWeather](https://openweathermap.org/)
-- Cat GIFs by [Giphy](https://giphy.com/)
+- Weather data by [Open-Meteo](https://open-meteo.com/)
+- Geocoding by [Nominatim/OpenStreetMap](https://nominatim.org/)
+- Cat images by [The Cat API](https://thecatapi.com/)
 - Pseudo-science by cats everywhere
 - Built with ☕ and 😹
 

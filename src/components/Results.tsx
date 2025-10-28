@@ -1,4 +1,4 @@
-import { WeatherData } from '../types';
+import type { WeatherData } from '../types';
 import { useEffect, useState } from 'react';
 import { fetchCatGif } from '../services/weather';
 
@@ -51,16 +51,20 @@ export default function Results({
       <div className="max-w-3xl w-full">
         {/* Results Card */}
         <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
-          {/* Cat GIF */}
-          {catGif && (
-            <div className="mb-8 rounded-2xl overflow-hidden">
+          {/* Cat Image or Emoji Fallback */}
+          <div className="mb-8 rounded-2xl overflow-hidden bg-gradient-to-br from-primary-50 to-accent-50 flex items-center justify-center">
+            {catGif ? (
               <img
                 src={catGif}
-                alt="Cat GIF"
+                alt="Cat"
                 className="w-full h-64 object-cover"
               />
-            </div>
-          )}
+            ) : (
+              <div className="text-9xl py-8 animate-bounce-slow">
+                🐱
+              </div>
+            )}
+          </div>
 
           {/* Headline */}
           <div className="text-center mb-8">

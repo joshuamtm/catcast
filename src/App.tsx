@@ -6,7 +6,7 @@ import LoadingAnalysis from './components/LoadingAnalysis';
 import Results from './components/Results';
 import { fetchWeatherData } from './services/weather';
 import { generateCatAnalysis } from './catLogic';
-import { WeatherData, UserSelections } from './types';
+import type { WeatherData, UserSelections } from './types';
 
 type AppStep = 'hero' | 'behavior' | 'personality' | 'loading' | 'results';
 
